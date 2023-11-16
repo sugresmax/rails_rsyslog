@@ -1,0 +1,44 @@
+require:
+  - rubocop-rails
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+Metrics/MethodLength:
+  Max: 16
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Max: 150
+
+Metrics/ClassLength:
+  Max: 150
+
+Layout/LineLength:
+  Max: 120
+
+Rails/RakeEnvironment:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/ApplicationController:
+  Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false

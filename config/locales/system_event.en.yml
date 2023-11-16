@@ -1,0 +1,24 @@
+en:
+  activerecord:
+    models:
+      system_event:
+        one: System event
+        many: System events
+        few: System events
+        other: System events
+    attributes:
+      system_event:
+        receivedat: Received at
+        devicereportedtime: Device time
+        facility: Facility
+        priority: Priority
+        fromhost: From host
+        message: Message
+        syslogtag: Tags
+        from_time: From time
+        till_time: Till time
+  system_events:
+    index:
+      start_typing_to_search: Start typing to search
+      log_out: Log out
+      password: Password

@@ -1,0 +1,11 @@
+.row.mt-5
+  .col-6.mt-5
+    =form_tag sessions_path, method: :post do
+      .mb-3
+        label.form-label for='session_name'= User.human_attribute_name :name
+        =text_field :session, :name, class: 'form-control'
+      .mb-3
+        label.form-label for='session_password'= User.human_attribute_name :password
+        =password_field :session, :password, class: 'form-control'
+      .mb-3
+        =button_tag t('shared.login'), class: 'btn btn-primary'

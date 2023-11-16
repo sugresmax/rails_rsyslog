@@ -1,0 +1,24 @@
+en:
+  activerecord:
+    models:
+      user:
+        one: User
+        many: Users
+        few: Users
+        other: Users
+    attributes:
+      user:
+        name: Name
+        password: Password
+        password_confirmation: Password confirmation
+        password_challenge: Current password
+    errors:
+      models:
+        user:
+          attributes:
+            old_password:
+              not_match: not match
+
+  users:
+    update:
+      update_successful: Password updated

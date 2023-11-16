@@ -1,0 +1,54 @@
+.row
+  .col-10
+    h1= t('activerecord.models.system_event.many')
+  .col-2.text-end
+    = link_to t('.password'), user_path, class: 'btn btn-sm btn-outline-dark'
+    = link_to t('.log_out'), logout_path, class: 'btn btn-sm btn-outline-dark me-1'
+
+.card.mb-5
+  .card-body
+    =form_tag system_events_path, method: :get do
+      .row.mb-3
+        .col-md-3.col-xs-6
+          = label_tag 'from_time', SystemEvent.human_attribute_name(:from_time), class: 'control-label'
+          = text_field_tag 'from_time', params[:from_time], class: 'form-control js-datetime-picker', autocomplete: :off
+        .col-md-3.col-xs-6
+          = label_tag 'till_time', SystemEvent.human_attribute_name(:till_time), class: 'control-label'
+          = text_field_tag 'till_time', params[:till_time], class: 'form-control js-datetime-picker', autocomplete: :off
+        .col-md-3.col-xs-6
+          = label_tag 'facility', SystemEvent.human_attribute_name(:facility), class: 'control-label'
+          = select_tag 'facility', options_for_select(facilities, params[:facility]),
+                  include_blank: true, class: 'form-select'
+      .row.mb-3
+        .col-md-3.col-xs-6.form-autocomplete data-controller='autocomplete' data-autocomplete-url-value=from_hosts_path
+          = label_tag 'fromhost', SystemEvent.human_attribute_name(:fromhost), class: 'control-label'
+          input.form-control data-autocomplete-target='input' value=params[:fromhost] placeholder=t('.start_typing_to_search')
+          = hidden_field_tag 'fromhost', params[:fromhost], data: { 'autocomplete-target' => 'hidden' }
+          = tag 'ul', class: 'list-group container', data: { 'autocomplete-target' => 'results' }
+        .col-md-3.col-xs-6
+          = label_tag 'message', SystemEvent.human_attribute_name(:message), class: 'control-label'
+          = text_field_tag 'message', params[:message], class: 'form-control', autocomplete: :off
+        .col-md-3.col-xs-6
+          = label_tag 'syslogtag', SystemEvent.human_attribute_name(:syslogtag), class: 'control-label'
+          = text_field_tag 'syslogtag', params[:syslogtag], class: 'form-control', autocomplete: :off
+      .row.mb-3
+        .col-md-12
+          =button_tag 'Submit', class: 'btn btn-outline-dark me-3'
+          =link_to 'Clear', root_path, class: 'btn btn-outline-dark'
+
+table.table
+  thead
+    tr
+      -%i[receivedat devicereportedtime facility priority fromhost message syslogtag].each do |item|
+        td= SystemEvent.human_attribute_name item
+
+  tbody
+    -@system_events_present.each do |event|
+      tr[class=system_event_classes(event)]
+        td= event.received_at
+        td= event.device_reported_time
+        -%i[facility priority fromhost message].each do |value|
+          td= event.public_send value
+        td= system_event_tags event
+
+= paginate @system_events

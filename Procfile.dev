@@ -1,0 +1,2 @@
+web: bin/rails server -b 0.0.0.0 -p 3000
+client: sh -c 'rm -rf public/packs/* || true && bin/shakapacker-dev-server'

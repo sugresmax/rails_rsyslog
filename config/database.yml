@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
+  database: rails_rsyslog_development
+
+test:
+  <<: *default
+  database: rails_rsyslog_test
+
+production:
+  primary:
+    host: <%= ENV["DB_HOST"] %>
+    adapter: postgresql
+    encoding: unicode
+    database: <%= ENV["RAILS_DB"] %>
+    username: <%= ENV["DB_USER"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+  systemevents:
+    host: <%= ENV["DB_HOST"] %>
+    adapter: postgresql
+    encoding: unicode
+    username: <%= ENV["DB_USER"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+    database: <%= ENV["RSYSLOG_DB"] %>
+    database_tasks: false

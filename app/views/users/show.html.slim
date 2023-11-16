@@ -1,0 +1,7 @@
+h1 Change password
+= simple_form_for @user, url: user_path, method: :patch do |f|
+  .mb-3= f.error_notification
+  .mb-3= f.input :password_challenge, required: true
+  .mb-3= f.input :password
+  .mb-3= f.input :password_confirmation
+  .mb-3= f.submit class: 'btn btn-outline-dark'

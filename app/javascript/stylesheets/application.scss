@@ -1,0 +1,12 @@
+.form-autocomplete {
+  position: relative;
+  ul {
+    position: absolute;
+  }
+  .list-group-item {
+    cursor: pointer;
+    &:hover {
+      background-color: #adb5bd;
+    }
+  }
+}

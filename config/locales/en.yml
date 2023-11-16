@@ -1,0 +1,5 @@
+en:
+  shared:
+    logged_in: Successfully logged in
+    login_error: Name or Password incorrect
+    successfully_logged_out: Successfully logged out
